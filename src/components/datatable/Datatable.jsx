@@ -56,11 +56,11 @@ const Datatable = () => {
     <div className="datatable">
       <div className="datatableTitle">
         Users
-          <Link to="/users/new" style={{ textDecoration: "none" }}>
+        <Link to="/users/new" className="link">
           Add New
         </Link>
       </div>
-        <DataGrid  
+        <DataGrid className="datagrid" 
         rows={rows}
         columns={columns.concat(actionColumn)}
         initialState={{
