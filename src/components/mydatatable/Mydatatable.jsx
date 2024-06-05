@@ -4,16 +4,16 @@ import { Link } from "react-router-dom";
 
 const columns = [
   { field: "id", headerName: "ID", width: 70 },
-  { field: "firstName", headerName: "First name", width: 130 },
+  { field: "Name", headerName: "Name", width: 130 },
  
 ];
 
 const rows = [
-  { id: 1, firstName: "Coffee" },
-  { id: 2, firstName: "Non Coffe" },
-  { id: 3, firstName: "Cake" },
-  { id: 4, firstName: "Pastry" },
-  { id: 5, firstName: "Cookie"},
+  { id: 1, Name: "Coffee" },
+  { id: 2, Name: "Non Coffe" },
+  { id: 3, Name: "Cake" },
+  { id: 4, Name: "Pastry" },
+  { id: 5, Name: "Cookie"},
 ];
 
 const actionColumn = [
