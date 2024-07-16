@@ -31,23 +31,26 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/">
-            <Route index element={<Home />}></Route>
-            <Route path="login" element={<Login />}></Route>
+          <Route path="login" element={<NotRequireAuth><Login /></NotRequireAuth>}></Route>
+            <Route index element={<RequireAuth><Home /></RequireAuth>}></Route>
+            
             <Route path="users">
               <Route index element={<RequireAuth><List columns={userColumns} /></RequireAuth>}></Route>
               <Route path=":userId" element={<RequireAuth><Single columns={userColumns} /></RequireAuth>}></Route>
               <Route 
               path="new" 
-              element={<New inputs={userInputs} title="Add New User" />}></Route>
+              element={<RequireAuth><New inputs={userInputs} title="Add New User" /></RequireAuth>}></Route>
             </Route>
             <Route path="products">
               <Route index element={<RequireAuth><List columns={productColumns} /></RequireAuth>}></Route>
               <Route path=":productId" element={<RequireAuth><Single columns={productColumns} /></RequireAuth>}></Route>
               <Route 
               path="new" 
-              element={<New inputs={productInputs} title="Add New Product" />}></Route>
+              element={<RequireAuth><New inputs={productInputs} title="Add New Product" /></RequireAuth>}></Route>
             </Route>
-            <Route path="mylist" element={<Mylist />}></Route>
+            <Route path="mylist">
+                    <Route index element={<RequireAuth><Mylist /></RequireAuth>}></Route>
+            </Route>
           </Route>
         </Routes>
       </BrowserRouter>

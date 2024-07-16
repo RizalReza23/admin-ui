@@ -10,7 +10,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const navigate = useNavigate()
+  const navitage = useNavigate();
 
   const {dispatch} = useContext(AuthContext);
 
@@ -20,9 +20,10 @@ const Login = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
-        const user = userCredential.user;
-        dispatch({type: "LOGIN", payload:user}); 
-        navigate("/");
+        const user = userCredential.user; 
+        dispatch ({type : "LOGIN", payload:user});
+        navitage("/");
+        console.log(user);
       })
       .catch((error) => {
         setError(true);
@@ -31,18 +32,19 @@ const Login = () => {
 
   return (
     <div className="login">
-      <form onSubmit={handleLogin}>
+      <form data-testid="form" onSubmit={handleLogin}>
         <input
-          type="email"
-          placeholder="email" 
+          id="email"
+          placeholder="Enter your email" 
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
+          id="password"
           type="password"
           placeholder="password" 
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Login</button>
+        <button type="submit" data-testid="submit">Login</button>
         {error && <span>Wrong email or password!</span>}
       </form>
     </div>
