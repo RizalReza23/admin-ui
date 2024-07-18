@@ -5,13 +5,14 @@ import List from "./pages/list/List";
 import Single from "./pages/single/Single";
 import New from "./pages/new/New";
 import Mylist from "./pages/mylist/Mylist";
+import NewCategory from "./pages/new/newCategory";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { productInputs, userInputs } from "./formsource";
+import { productInputs, userInputs, categoryInputs } from "./formsource";
 import "./style/dark.scss";
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import { AuthContext } from "./context/AuthContext";
-import { userColumns, productColumns } from "./datatablesource";
+import { userColumns, productColumns, categoryColumns } from "./datatablesource";
 
 function App() {
   const {darkMode} = useContext(DarkModeContext);
@@ -48,9 +49,17 @@ function App() {
               path="new" 
               element={<RequireAuth><New inputs={productInputs} title="Add New Product" /></RequireAuth>}></Route>
             </Route>
-            <Route path="mylist">
-                    <Route index element={<RequireAuth><Mylist /></RequireAuth>}></Route>
-            </Route>
+            <Route path="categories">
+            <Route index element={<RequireAuth><Mylist columns={categoryColumns} /></RequireAuth>}></Route>
+            <Route
+                  path="new"
+                  element={
+                    <RequireAuth>
+                      <NewCategory inputs={categoryInputs} title="Add New Category" />
+                    </RequireAuth>
+                  }
+                />
+                </Route>
           </Route>
         </Routes>
       </BrowserRouter>
