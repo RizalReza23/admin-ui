@@ -59,10 +59,6 @@ const Sidebar = () => {
           <span>Products</span>
         </li>
       </Link>
-      <li>
-        <StoreIcon className="icon" />
-        <span>Orders</span>
-      </li>
       <Link to="/categories">
       <li>
         <CategoryIcon className="icon" />
